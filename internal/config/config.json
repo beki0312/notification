@@ -3,13 +3,6 @@
     "server": {
       "port": ":8073"
     },
-    "postgres": {
-      "host": "192.168.150.185",
-      "port": "5433",
-      "user": "user_b2b",
-      "dbname": "db_b2b",
-      "password": "pass_b2b"
-    },
 
     "logger": {
       "debug": true,
