@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package shared.service;
+
+option go_package="github.com/beki"
+service NotfofcationService {
+  rpc AutoNotification(AutomaticNotificationRequest) returns (NotificationServiceErrorResponse);
+  rpc GetNotificationsMerchant (GetNificationRequest) returns (NotificationsResponse);
+  rpc SenNotification (SeenNotificationRequest) returns (SeenNotificationResponse);
+  rpc AdminCreateNotification(AddingNotificationAdminRequest) returns (NotificationServiceErrorResponse);
+  rpc GetAdminNotifications(GetNificationRequest) returns (NotificationsResponse);
+
+}
+
+message NotificationServiceErrorResponse {
+int64 err_code = 1;
+string err_description = 2;
+}
+
+message AutomaticNotificationRequest {
+string content = 1;
+string deeplink_ID = 2;
+string id_keycloack = 3;
+}
+
+message GetNificationRequest {
+  string token=1;
+  string id_employeer =2;
+  int64 limit =3;
+  int64 page=4;
+}
+
+message Deeplink{
+  string type=1;
+  string value =2;
+}
+
+message Notifications {
+  int64 id =1;
+  string content = 2;
+  bool seen =3;
+  string created_at =4;
+  repeated Deeplink action =5;
+}
+
+message NotificationsResponse{
+  repeated Notifications get_notification_detail =1;
+  NotificationServiceErrorResponse error =2;
+}
+
+
+message SeenNotificationRequest {
+  int64 id=1;
+  bool seen =2;
+}
+
+message SeenNotificationResponse {
+  bool seen =1;
+  NotificationServiceErrorResponse error=2;
+}
+
+message AddingNotificationAdminRequest {
+    string content =1;
+    string Id_deeplink = 2;
+}
+
+
+
