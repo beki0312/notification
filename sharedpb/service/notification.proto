@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package shared.service;
 
-option go_package="github.com/beki"
+option go_package="https://github.com/beki0312/notification/tree/master/sharedpb/service";
 service NotfofcationService {
   rpc AutoNotification(AutomaticNotificationRequest) returns (NotificationServiceErrorResponse);
   rpc GetNotificationsMerchant (GetNificationRequest) returns (NotificationsResponse);
